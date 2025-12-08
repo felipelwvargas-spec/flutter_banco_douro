@@ -24,7 +24,8 @@ class AccountService {
   /// - Faz uma requisição HTTP GET para a URL configurada.
   /// - Decodifica o JSON retornado e converte os itens em `Account`.
   Future<List<Account>> getAll() async {
-    Response response = await get(Uri.parse(url));
+    Response response = await get(Uri.parse(url),
+    headers: {"Authorization": "Bearer $githubApiKey"},);
     // Emite uma mensagem simples informando que houve a requisição
     _streamController.add("${DateTime.now()} | Requisição de leitura.");
 
