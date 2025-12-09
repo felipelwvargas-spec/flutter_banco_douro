@@ -48,7 +48,7 @@ class AccountWidget extends StatelessWidget {
           // Botão de configurações
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.settings,color: Colors.black,),
           ),
         ],
       ),

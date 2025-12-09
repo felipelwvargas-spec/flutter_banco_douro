@@ -52,9 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Ação ao pressionar o botão de adicionar conta
+
         },
         backgroundColor: AppColor.orange,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.black,),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
