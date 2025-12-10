@@ -3,6 +3,7 @@ import 'package:flutter_banco_douro/models/account.dart';
 import 'package:flutter_banco_douro/services/account_services.dart';
 import 'package:flutter_banco_douro/ui/styles/colors.dart';
 import 'package:flutter_banco_douro/ui/widgets/account_widget.dart';
+import 'package:flutter_banco_douro/ui/widgets/add_account_modal.dart';
 
 /// Tela principal que lista todas as contas do usuário.
 ///
@@ -52,7 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Ação ao pressionar o botão de adicionar conta
-
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder:(context) {
+              return const AddAccountModal();
+            },
+          );
         },
         backgroundColor: AppColor.orange,
         child: const Icon(Icons.add, color: Colors.black,),
