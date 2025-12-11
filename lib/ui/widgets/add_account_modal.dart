@@ -5,8 +5,7 @@ class AddAccountModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
+    return 
         Container(
           height: MediaQuery.of(context).size.height * 0.80,
           padding: const EdgeInsets.all(20),
@@ -16,7 +15,7 @@ class AddAccountModal extends StatelessWidget {
             // Título da aplicação
             const Text(
               "Adicionar nova conta",
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -30,9 +29,27 @@ class AddAccountModal extends StatelessWidget {
                 fontSize: 12,
               ),
             ),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Nome',
+              ),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Sobrenome',
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(onPressed: (){}, child: const Text("Cancelar")),
+                ElevatedButton(onPressed: (){}, child: const Text("Adicionar"),),
+              ]
+            )
+
           ]),
-        ),
-      ],
-    );
+        );
   }
 }
