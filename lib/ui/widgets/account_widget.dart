@@ -22,7 +22,7 @@ class AccountWidget extends StatelessWidget {
       ),
       // Conteúdo: informações à esquerda, ícone de configurações à direita
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // Não usar spaceBetween junto com Expanded; controlar espaçamento manualmente
         children: [
           // Coluna com os detalhes da conta (usa Expanded para evitar overflow em textos longos)
           Expanded(
@@ -61,10 +61,13 @@ class AccountWidget extends StatelessWidget {
               ],
             ),
           ),
-          // Botão de configurações
+          // Botão de configurações (padding e constraints reduzidos para evitar aumento de largura)
+          const SizedBox(width: 8),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.settings,color: Colors.black,),
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+            icon: const Icon(Icons.settings, color: Colors.black),
           ),
         ],
       ),
