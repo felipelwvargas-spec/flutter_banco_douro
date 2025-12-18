@@ -22,7 +22,7 @@ class BancoDouroApp extends StatelessWidget {
       // Define as rotas disponíveis na aplicação
       routes: {
         'login': (context) => const LoginScreen(),
-        'home': (context) => HomeScreen(),
+        'home': (context) => const HomeScreen(),
       },
       // Define a rota inicial como a tela de login
       initialRoute: 'login',

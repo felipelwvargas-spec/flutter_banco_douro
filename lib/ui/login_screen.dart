@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banco_douro/ui/styles/colors.dart';
 
 /// Tela de login do aplicativo
 class LoginScreen extends StatelessWidget {
@@ -47,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                     // Campo de entrada para e-mail
                     TextFormField(
                       decoration: const InputDecoration(
-                        label: Text("E-mail"),
+                        label: Text("E-mail",),labelStyle: TextStyle(color: Colors.blueGrey)
 
                         
                       ),
@@ -57,10 +58,10 @@ class LoginScreen extends StatelessWidget {
                     TextFormField(
                       obscureText: true,
                       decoration: const InputDecoration(
-                        label: Text("Senha"),
+                        label: Text("Senha"),labelStyle: TextStyle(color: Colors.blueGrey)
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 30),
                     // Botão de login que navega para a tela de home
                     ElevatedButton(
                       onPressed: () {
@@ -68,7 +69,8 @@ class LoginScreen extends StatelessWidget {
                       },
                       style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
-                          Color(0xFFFFA902),
+                          AppColor.orange,
+                          
                         ),
                       ),
                       child: const Text(

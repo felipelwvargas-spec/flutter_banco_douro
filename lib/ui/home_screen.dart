@@ -14,7 +14,7 @@ import 'package:flutter_banco_douro/ui/widgets/add_account_modal.dart';
 /// dentro de um `setState` para forçar o `FutureBuilder` a recarregar os
 /// dados.
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
