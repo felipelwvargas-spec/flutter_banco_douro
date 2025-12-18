@@ -17,9 +17,10 @@ class AddAccountModal extends StatefulWidget {
 
 class _AddAccountModalState extends State<AddAccountModal> {
   String _accountType = "AMBROSIA";
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
 
+  bool isLoading = false;
 
   /// Constrói o layout do modal com campos de entrada e botões.
   @override
@@ -99,7 +100,7 @@ class _AddAccountModalState extends State<AddAccountModal> {
           Row(children: [
             Expanded(
                 child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: (isLoading)? null :() {
                       onButtonCancelClicked();
                     },
                     style: const ButtonStyle(
@@ -122,33 +123,51 @@ class _AddAccountModalState extends State<AddAccountModal> {
                   AppColor.orange,
                 ),
               ),
-              child: const Text(
-                "Adicionar",
-                style: TextStyle(color: Colors.black),
-              ),
+              child: (isLoading)
+                  ? const CircularProgressIndicator(
+                    strokeWidth: 6,
+                    color: Colors.black,
+                  )
+                  : const Text(
+                      "Adicionar",
+                      style: TextStyle(color: Colors.black),
+                    ),
             )),
           ])
         ]),
       ),
     );
   }
-  onButtonCancelClicked() {
-    Navigator.pop(context);
-  }
-  onButtonSendClicked() {
-    // Lógica para adicionar a conta
-    String name = _nameController.text;
-    String lastName = _lastNameController.text;
 
-    Account account = Account(
-      id: const Uuid().v1(), 
-      name: name, 
-      lastName: lastName, 
-      balance: 0, 
-      accountType: _accountType,
+  onButtonCancelClicked() {
+    if (!isLoading) {
+      closeModal();
+    }
+  }
+
+  onButtonSendClicked() async {
+    if (!isLoading) {
+      setState(() {
+        isLoading = true;
+      });
+      // Lógica para adicionar a conta
+      String name = _nameController.text;
+      String lastName = _lastNameController.text;
+
+      Account account = Account(
+        id: const Uuid().v1(),
+        name: name,
+        lastName: lastName,
+        balance: 0,
+        accountType: _accountType,
       );
 
-    AccountService().addAccount(account);
-  }
+      await AccountService().addAccount(account);
 
+      closeModal();
+    }
+  }
+  closeModal() {
+    Navigator.pop(context);
+  }
 }

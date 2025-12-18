@@ -24,26 +24,42 @@ class AccountWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Coluna com os detalhes da conta
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Nome completo do titular
-              Text(
-                "${account.name} ${account.lastName}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+          // Coluna com os detalhes da conta (usa Expanded para evitar overflow em textos longos)
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nome completo do titular
+                Text(
+                  "${account.name} ${account.lastName}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              // ID da conta
-              Text("ID: ${account.id}"),
-              // Saldo formatado com 2 casas decimais
-              Text("Saldo: ${account.balance.toStringAsFixed(2)}"),
-              // Tipo de conta (com valor padrão se não definido)
-              Text("Tipo: ${account.accountType ?? "Sem tipo definido."}"),
-            ],
+                // ID da conta
+                Text(
+                  "ID: ${account.id}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                // Saldo formatado com 2 casas decimais
+                Text(
+                  "Saldo: ${account.balance.toStringAsFixed(2)}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                // Tipo de conta (com valor padrão se não definido)
+                Text(
+                  "Tipo: ${account.accountType ?? "Sem tipo definido."}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
           // Botão de configurações
           IconButton(

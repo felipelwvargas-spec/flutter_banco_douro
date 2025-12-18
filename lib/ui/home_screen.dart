@@ -56,13 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder:(context) {
+            builder: (context) {
               return const AddAccountModal();
             },
           );
         },
         backgroundColor: AppColor.orange,
-        child: const Icon(Icons.add, color: Colors.black,),
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -76,13 +79,25 @@ class _HomeScreenState extends State<HomeScreen> {
               switch (snapshot.connectionState) {
                 // Estado: nenhuma requisição foi feita
                 case ConnectionState.none:
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    strokeWidth: 6,
+                    color: Colors.black,
+                  ));
                 // Estado: aguardando resposta da API
                 case ConnectionState.waiting:
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    strokeWidth: 6,
+                    color: Colors.black,
+                  ));
                 // Estado: requisição em progresso
                 case ConnectionState.active:
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    strokeWidth: 6,
+                    color: Colors.black,
+                  ));
                 // Estado: requisição concluída
                 case ConnectionState.done:
                   // Se não houver dados ou a lista estiver vazia
