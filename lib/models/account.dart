@@ -36,7 +36,7 @@ class Account {
       id: map['id'] as String,
       name: map['name'] as String,
       lastName: map['lastName'] as String,
-      balance: map['balance'] as double,
+      balance: (map['balance'] as num).toDouble(),
       accountType:
           (map['accountType'] != null) ? map['accountType'] as String : null,
     );

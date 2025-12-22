@@ -69,8 +69,8 @@ class Transaction {
       senderAccountId: map['senderAccountId'] as String,
       receiverAccountId: map['receiverAccountId'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
-      amount: map['amount'] as double,
-      taxes: map['taxes'] as double,
+      amount: (map['amount'] as num).toDouble(),
+      taxes: (map['taxes'] as num).toDouble(),
     );
   }
 
